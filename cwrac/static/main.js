@@ -1049,9 +1049,13 @@ class Compasses {
                 requestAnimationFrame_status = window.requestAnimationFrame(render);
 
             });
-            canvas.addEventListener('mouseup', function (e) {
+            canvas.addEventListener('mouseup', function (e) {  
                 var last_index = operation_list.length - 1;
                 if (last_index < 0 || !isDrawing) {
+                    if(current_tool == Tools.MOVE){
+                        isDrawing = false;
+                    }
+                    
                     return false;
                 }
 
@@ -1063,7 +1067,7 @@ class Compasses {
                     }
                     window.cancelAnimationFrame(requestAnimationFrame_status);
                     isDrawing = false;
-                }
+                } 
 
                 render();
             });
