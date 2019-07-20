@@ -1005,10 +1005,10 @@ class Compasses {
                 }
             }
 
-            function start(x,y) {
+            function start(x, y) {
                 if (isDrawing) {
                     return;
-                } 
+                }
 
                 if (current_tool == Tools.MOVE) {
                     movie_points.x = x;
@@ -1021,11 +1021,11 @@ class Compasses {
                 render();
             }
 
-            function move(x,y) {
+            function move(x, y) {
                 var last_index = operation_list.length - 1;
                 if (last_index < 0 || !isDrawing) {
                     return false;
-                } 
+                }
 
                 if (current_tool == Tools.MOVE) {
                     //移动画布
@@ -1040,7 +1040,7 @@ class Compasses {
                 requestAnimationFrame_status = window.requestAnimationFrame(render);
             }
 
-            function end(x,y) {
+            function end(x, y) {
                 var last_index = operation_list.length - 1;
                 if (last_index < 0 || !isDrawing) {
                     if (current_tool == Tools.MOVE) {
@@ -1069,40 +1069,42 @@ class Compasses {
             canvas.addEventListener('mousedown', function (e) {
                 var x = e.clientX - canvas_rect.left;
                 var y = e.clientY - canvas_rect.top;
-                start(x,y);
+                start(x, y);
             });
             //当手指接触屏幕时触发
             canvas.addEventListener('touchstart', function (e) {
-                var touch = e.touches[0]; 
-                var x = touch.pageX - canvas_rect.left;
-                var y = touch.pageY - canvas_rect.top; 
-                start(x,y);
+                var touch = e.touches[0];
+                var x = touch.clientX - canvas_rect.left;
+                var y = touch.clientY - canvas_rect.top;
+                start(x, y);
             });
 
             canvas.addEventListener('mousemove', function (e) {
                 var x = e.clientX - canvas_rect.left;
                 var y = e.clientY - canvas_rect.top;
-                move(x,y)
+                move(x, y)
             });
             //当已经接触屏幕的手指开始移动后触发
             canvas.addEventListener('touchmove', function (e) {
-                var touch = e.touches[0]; 
-                var x = touch.pageX - canvas_rect.left;
-                var y = touch.pageY - canvas_rect.top; 
-                move(x,y)
+                var touch = e.touches[0];
+                var x = touch.clientX - canvas_rect.left;
+                var y = touch.clientY - canvas_rect.top;
+                move(x, y)
             });
 
             canvas.addEventListener('mouseup', function (e) {
                 var x = e.clientX - canvas_rect.left;
                 var y = e.clientY - canvas_rect.top;
-                end(x,y);
+                end(x, y);
             });
             //当手指离开屏幕时触发
-            canvas.addEventListener('touchend', function (e) { 
-                var touch = e.touches[0]; 
-                var x = touch.pageX - canvas_rect.left;
-                var y = touch.pageY - canvas_rect.top; 
-                end(x,y);
+            canvas.addEventListener('touchend', function (e) {
+                // var touch = e.touches[0];
+                // var x = touch.clientX - canvas_rect.left;
+                // var y = touch.clientY - canvas_rect.top;
+                var x=0;
+                var y=0;
+                end(x, y);
             });
 
             //右键单击、取消？
