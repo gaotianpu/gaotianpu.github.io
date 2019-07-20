@@ -9,6 +9,10 @@
     <title>尺规作图</title>
     <script async src="static/main.js"></script>
     <style>
+        html，body {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
         /* HIDE RADIO */
         [type=radio] {
             position: absolute;
@@ -35,20 +39,28 @@
 
 <body style="margin: 0px; padding:0px; ">
     <div id="toolbox" style="margin: 5px; ">
-        <label title="移动"><input type="radio" name="toolbox" value="0" checked><img src="static/images/movie.svg" alt="移动 Movie">
+        <label title="移动"><input type="radio" name="toolbox" value="0" checked><img src="static/images/movie.svg"
+                alt="移动 Movie">
         </label>
-        <label title="点"><input type="radio" name="toolbox" value="1"><img src="static/images/point.svg" alt="点 Point"> </label>
-        <label title="线"><input type="radio" name="toolbox" value="2"><img src="static/images/line.svg" alt="线 Line"> </label>
-        <label title="圆"><input type="radio" name="toolbox" value="3"><img src="static/images/circle.svg" alt="圆 Circle"> </label>
-        <label title="中垂线"><input type="radio" name="toolbox" value="4"><img src="static/images/perpendicular_bisector.svg"
-                alt="中垂线"> </label>
-        <label title="角平分线"><input type="radio" name="toolbox" value="5"><img src="static/images/angle_bisector.svg" alt="角平分线">
+        <label title="点"><input type="radio" name="toolbox" value="1"><img src="static/images/point.svg" alt="点 Point">
         </label>
-        <label title="过点垂线"><input type="radio" name="toolbox" value="6"><img src="static/images/perpendicular_line.svg" alt="过点垂线">
+        <label title="线"><input type="radio" name="toolbox" value="2"><img src="static/images/line.svg" alt="线 Line">
         </label>
-        <label title="平行线"><input type="radio" name="toolbox" value="7"><img src="static/images/parallel_line.svg" alt="平行线">
+        <label title="圆"><input type="radio" name="toolbox" value="3"><img src="static/images/circle.svg"
+                alt="圆 Circle"> </label>
+        <label title="中垂线"><input type="radio" name="toolbox" value="4"><img
+                src="static/images/perpendicular_bisector.svg" alt="中垂线"> </label>
+        <label title="角平分线"><input type="radio" name="toolbox" value="5"><img src="static/images/angle_bisector.svg"
+                alt="角平分线">
         </label>
-        <label title="圆规"><input type="radio" name="toolbox" value="8"><img src="static/images/circle.svg" alt="圆规"> </label>
+        <label title="过点垂线"><input type="radio" name="toolbox" value="6"><img src="static/images/perpendicular_line.svg"
+                alt="过点垂线">
+        </label>
+        <label title="平行线"><input type="radio" name="toolbox" value="7"><img src="static/images/parallel_line.svg"
+                alt="平行线">
+        </label>
+        <label title="圆规"><input type="radio" name="toolbox" value="8"><img src="static/images/circle.svg" alt="圆规">
+        </label>
     </div>
     <div>
         <input id="btn_undo" type="image" src="static/images/undo.svg" value="撤销" />
