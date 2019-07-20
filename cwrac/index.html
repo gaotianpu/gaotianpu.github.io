@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">     
+    <meta content="yes" name="apple-mobile-web-app-capable">
     <meta name="description" content="尺规作图">
     <meta name="author" content="gaotianpu,新浪微博@高天蒲">
     <title>尺规作图</title>
@@ -37,7 +38,7 @@
     </style>
 </head>
 
-<body style="margin: 0px; padding:0px; ">
+<body style="margin: 0px; padding:0px; " ontouchmove="event.preventDefault()" >
     <div id="toolbox" style="margin: 5px; ">
         <label title="移动"><input type="radio" name="toolbox" value="0" checked><img src="static/images/movie.svg"
                 alt="移动 Movie">
