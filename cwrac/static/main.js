@@ -994,9 +994,9 @@ class Compasses {
                 if (current_tool == Tools.CIRCLE) {
                     obj = new Circle(point);
                 }
-                console.log(current_tool);
+                // console.log(current_tool);
                 if (current_tool == Tools.PERPENDICULAR_BISECTOR) {
-                    console.log(point);
+                    // console.log(point);
                     obj = new PerpendicularBisector(point);
                 }
 
@@ -1005,13 +1005,10 @@ class Compasses {
                 }
             }
 
-            function start(e) {
+            function start(x,y) {
                 if (isDrawing) {
                     return;
-                }
-
-                var x = e.clientX - canvas_rect.left;
-                var y = e.clientY - canvas_rect.top;
+                } 
 
                 if (current_tool == Tools.MOVE) {
                     movie_points.x = x;
@@ -1024,14 +1021,11 @@ class Compasses {
                 render();
             }
 
-            function move(e) {
+            function move(x,y) {
                 var last_index = operation_list.length - 1;
                 if (last_index < 0 || !isDrawing) {
                     return false;
-                }
-
-                var x = e.clientX - canvas_rect.left;
-                var y = e.clientY - canvas_rect.top;
+                } 
 
                 if (current_tool == Tools.MOVE) {
                     //移动画布
@@ -1046,7 +1040,7 @@ class Compasses {
                 requestAnimationFrame_status = window.requestAnimationFrame(render);
             }
 
-            function end(e) {
+            function end(x,y) {
                 var last_index = operation_list.length - 1;
                 if (last_index < 0 || !isDrawing) {
                     if (current_tool == Tools.MOVE) {
@@ -1073,26 +1067,43 @@ class Compasses {
             //1. 拖拽式 
             //2. 点击式 1.鼠标点击2下确定一条直线，一个圆等  
             canvas.addEventListener('mousedown', function (e) {
-                start(e);
+                var x = e.clientX - canvas_rect.left;
+                var y = e.clientY - canvas_rect.top;
+                start(x,y);
             });
             //当手指接触屏幕时触发
             canvas.addEventListener('touchstart', function (e) {
-                start(e);
+                var touch = e.touches[0]; 
+                var x = touch.pageX - canvas_rect.left;
+                var y = touch.pageY - canvas_rect.top; 
+                start(x,y);
             });
 
             canvas.addEventListener('mousemove', function (e) {
-                move(e)
+                var x = e.clientX - canvas_rect.left;
+                var y = e.clientY - canvas_rect.top;
+                move(x,y)
             });
             //当已经接触屏幕的手指开始移动后触发
             canvas.addEventListener('touchmove', function (e) {
-                move(e);
+                var touch = e.touches[0]; 
+                var x = touch.pageX - canvas_rect.left;
+                var y = touch.pageY - canvas_rect.top; 
+                move(x,y)
             });
 
             canvas.addEventListener('mouseup', function (e) {
-                end(e);
+                var x = e.clientX - canvas_rect.left;
+                var y = e.clientY - canvas_rect.top;
+                end(x,y);
             });
             //当手指离开屏幕时触发
-            canvas.addEventListener('touchend', function (e) { });
+            canvas.addEventListener('touchend', function (e) { 
+                var touch = e.touches[0]; 
+                var x = touch.pageX - canvas_rect.left;
+                var y = touch.pageY - canvas_rect.top; 
+                end(x,y);
+            });
 
             //右键单击、取消？
 
